@@ -1,6 +1,9 @@
 ﻿using DavidProject.Data;
 using DavidProject.Models;
 using DavidProject.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +14,10 @@ namespace DavidProject.Repositories
 	public class itemRepository : IItem
 	{
 		private readonly DataContext context;
-		public itemRepository(DataContext context)
+        private readonly UserManager<ApplicationUser> userManager;
+        public itemRepository(DataContext context,UserManager<ApplicationUser>userManager)
 		{
+            this.userManager = userManager;
 			this.context = context;
 		}
 		public void Create(item item)
@@ -35,9 +40,19 @@ namespace DavidProject.Repositories
 			return entity;
 		}
 
+		public IEnumerable<item> GetItemByUser(ApplicationUser user,string id)
+		{
+			return context.Items.Where(x => x.ApplicationUser == user&&x.UserId==id);
+		}
+
 		public IEnumerable<item> GetItems()
 		{
 			return context.Items.ToList();
 		}
-	}
+        public void Update(int? id, item obj)
+        {
+            context.Entry(obj).State = EntityState.Modified;
+            context.SaveChanges();
+        }
+    }
 }
