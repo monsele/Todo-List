@@ -132,13 +132,8 @@
 
             $('#save').on('click', () => {
                 function Get() {
-                    var chek = $('input[name="complete"]:checked').val();
-                    if (chek == "1") {
-                        return true;
-                    }
-                    else {
-                        return false
-                    }
+                    var chek = $('input[name="complete"]:checked').prop('checked');
+                    return chek;
                 }
 
                 // alert($('#chec:checked').val())
