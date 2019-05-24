@@ -2,23 +2,42 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>9ef6436c-74a5-42ef-8719-6f5cbca79303</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20190415153602_ApplicationUser.cs" />
-    <Compile Remove="Migrations\20190415153602_ApplicationUser.Designer.cs" />
-    <Compile Remove="Migrations\20190415154351_ApplicationUser.cs" />
-    <Compile Remove="Migrations\20190415154351_ApplicationUser.Designer.cs" />
+    <None Remove="Scripts\jquery\dist\jquery.js" />
+    <None Remove="Scripts\jquery\dist\jquery.min.js" />
+    <None Remove="Scripts\jquery\dist\jquery.min.map" />
+    <None Remove="Scripts\jquery\LICENSE.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Include="Scripts\jquery\dist\jquery.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\jquery\dist\jquery.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\jquery\dist\jquery.min.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\jquery\LICENSE.txt">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.3.1" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.2" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.2" />
+    <PackageReference Include="jQuery" Version="3.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
+    <PackageReference Include="NLog" Version="4.6.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="ThisDate" Version="1.0.5" />
+    <PackageReference Include="ThisDate.DefinedCalendars" Version="1.0.4" />
   </ItemGroup>
 
   <ItemGroup>

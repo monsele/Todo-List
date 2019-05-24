@@ -57,9 +57,11 @@ namespace DavidProject.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var signResult = await signInManager.PasswordSignInAsync(dto.Username, dto.Password,false,false);//note that in production ispersistent will be true
+				var signResult = await signInManager.PasswordSignInAsync(dto.Username, dto.Password,true,false);//note that in production ispersistent will be true
+
 				if (signResult.Succeeded)
 				{
+                    
 					return Ok(new Response<IEnumerable<LoginDto>>()
 					{
 						Message="Sucessfully signed in",

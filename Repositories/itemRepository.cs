@@ -42,7 +42,7 @@ namespace DavidProject.Repositories
 
 		public IEnumerable<item> GetItemByUser(ApplicationUser user,string id)
 		{
-			return context.Items.Where(x => x.ApplicationUser == user&&x.UserId==id);
+			return context.Items.Where(x => x.ApplicationUser == user&&x.UserId==id).ToList();
 		}
 
 		public IEnumerable<item> GetItems()
@@ -51,7 +51,13 @@ namespace DavidProject.Repositories
 		}
         public void Update(int? id, item obj)
         {
-            context.Entry(obj).State = EntityState.Modified;
+           var entity=context.Items.Find(id);
+            entity.Name = obj.Name;
+            entity.Priority = obj.Priority;
+            entity.isCompleted = obj.isCompleted;
+            entity.Description = obj.Description;
+            entity.DueDate = obj.DueDate;
+            context.Items.Update(entity);
             context.SaveChanges();
         }
     }

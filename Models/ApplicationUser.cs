@@ -8,6 +8,6 @@ namespace DavidProject.Models
 		//public int itemId { get; set; }
 		public IEnumerable<item> items { get; set; }
 		//public int ReoccurringId { get; set; }
-		public IEnumerable<Reoccurring> reoccurring { get; set; }
+		public IEnumerable<MonthlyTask> Monthlies{ get; set; }
 	}
 }

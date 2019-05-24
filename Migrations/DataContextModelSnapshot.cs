@@ -27,11 +27,13 @@ namespace DavidProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
                     b.Property<DateTime>("DueDate");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<int>("Priority");
 
@@ -46,24 +48,24 @@ namespace DavidProject.Migrations
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("DavidProject.Models.Reoccurring", b =>
+            modelBuilder.Entity("DavidProject.Models.MonthlyTask", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Date");
-
-                    b.Property<string>("Description");
+                    b.Property<int>("Day");
 
                     b.Property<string>("Name");
 
                     b.Property<string>("UserId");
 
+                    b.Property<int>("nth");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("things");
+                    b.ToTable("Monthlies");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -247,10 +249,10 @@ namespace DavidProject.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("DavidProject.Models.Reoccurring", b =>
+            modelBuilder.Entity("DavidProject.Models.MonthlyTask", b =>
                 {
                     b.HasOne("DavidProject.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("reoccurring")
+                        .WithMany("Monthlies")
                         .HasForeignKey("UserId");
                 });
 

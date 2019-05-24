@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [{
+  "provider": "cdnjs",
+  "library": "jquery@3.4.1",
+  "destination": "wwwroot/jquery/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "bootswatch@4.3.1",
+  "destination": "wwwroot/bootswatch/"
+}
+]
+}

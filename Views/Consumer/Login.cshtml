@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnLogin').click(function () {
+                $.ajax({
+                    url: 'http://localhost:63383/api/Account/Login',
+                    method: 'POST',
+                    data: {
+                        UserName: $('#UserName').val(),
+                        Password: $('#Password').val()
+                    },
+                    success: function () {
+                        var Name=$('#UserName').val();
+                        alert("You just login in" + Name);
+                        window.location = "Create";
+                    },
+                    error: function (jqXHR) {
+                        $('#divErrorTxt').text(jqXHR.responseText);
+                        $('#divError').show('fade');
+                    }
+                })
+            })
+
+            $('#linkclose').click(function () {
+                $('#divError').hide('fade');
+            });
+        });
+    </script>
+    <link href=" https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-expand-sm bg-light">
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="ToDoList.html" id="getAll">Home Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="getAll">Get All</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Get All Recurring task</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Register.html">Register</a>
+                </li>
+
+            </ul>
+        </nav>
+        <section id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                    <form role="form" class="register-form">
+                        <h2>Sign-In</h2>
+                        <hr class="colorgraph">
+                        <div class="form-group">
+                            <input type="text" name="UserName" id="UserName" class="form-control input-lg"
+                                   placeholder="UserName" tabindex="4">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-lg" id="Password" placeholder="Password">
+                        </div>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <input type="button" value="Log in" class="btn btn-primary btn-block btn-lg"
+                                       tabindex="7" id="btnLogin"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <div id="divError" class="alert alert-danger collapse">
+            <a id="linkclose" class="close" href="#">&times;</a>
+            <div id="divErrorTxt"></div>
+        </div>
+    </div>
+
+</body>
+</html>

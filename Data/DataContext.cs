@@ -1,6 +1,7 @@
 ﻿using DavidProject.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +15,17 @@ namespace DavidProject.Data
 		{
 		}
 		public DbSet<item> Items { get; set; }
-		public DbSet<Reoccurring>things{ get; set; }
+        public DbSet<MonthlyTask> Monthlies { get; set; }
 		public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-		//protected override void OnModelCreating(ModelBuilder builder)
-		//{
-		//	// add your own confguration here
-		//	base.OnModelCreating(builder);
-		//	builder.Entity<ApplicationUser>().HasMany(x => x.items).WithOne(x => x.ApplicationUser).IsRequired();
-		//	builder.Entity<ApplicationUser>().HasMany(x => x.reoccurring).WithOne(x => x.ApplicationUser).IsRequired(false);
-
-		//}
-
-		
 	}
-	
+
+    public class HangContext : IDesignTimeDbContextFactory<DataContext>
+    {
+        DataContext IDesignTimeDbContextFactory<DataContext>.CreateDbContext(string[] args)
+        {
+            var builder = new DbContextOptionsBuilder<DataContext>();
+            builder.UseSqlServer("Server=DESKTOP-92LM3ID\\SQLEXPRESS;Database=David_DB;Trusted_Connection=True;MultipleActiveResultSets=true");
+            return new DataContext(builder.Options);
+        }
+    }
 }
