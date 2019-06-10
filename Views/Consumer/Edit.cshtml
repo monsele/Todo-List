@@ -40,7 +40,7 @@
         $('#btnEdit').on('click', (id) => {
             id = data.id
             $.ajax({
-                url: 'http://localhost:63383/api/item' + data.id,
+                url: 'http://localhost:63353/api/item' + data.id,
                 contentType: "application/json",
                 method: 'PUT',
                 data: JSON.stringify(data),

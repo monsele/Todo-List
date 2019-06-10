@@ -14,7 +14,7 @@
         $(document).ready(function () {
             $('#btnLogin').click(function () {
                 $.ajax({
-                    url: 'http://localhost:63383/api/Account/Login',
+                    url: 'http://localhost:63353/api/Account/Login',
                     method: 'POST',
                     data: {
                         UserName: $('#UserName').val(),
@@ -77,18 +77,18 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
                                 <input type="button" value="Log in" class="btn btn-primary btn-block btn-lg"
-                                       tabindex="7" id="btnLogin"/>
+                                       tabindex="7" id="btnLogin" />
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
-        <div id="divError" class="alert alert-danger collapse">
-            <a id="linkclose" class="close" href="#">&times;</a>
-            <div id="divErrorTxt"></div>
-        </div>
-    </div>
 
+    </div>
+    <div id="divError" class="alert alert-danger collapse">
+        <a id="linkclose" class="close" href="#">&times;</a>
+        <div id="divErrorTxt"></div>
+    </div>
 </body>
 </html>

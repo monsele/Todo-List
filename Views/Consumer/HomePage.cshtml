@@ -149,7 +149,7 @@
                 $.ajax({
                     type: 'PUT',
                     async: false,
-                    url: 'http://localhost:63383/api/item/' + data.id,
+                    url: 'http://localhost:63353/api/item/' + data.id,
                     contentType: "application/json",
                     method: 'PUT',
                     data: JSON.stringify(data),
@@ -174,7 +174,7 @@
             $.ajax({
                 type: 'DELETE',
                 // async: 'false',
-                url: 'http://localhost:63383/api/item/' + id,
+                url: 'http://localhost:63353/api/item/' + id,
                 success: () => {
                     UserList();
                     alert("Task has been deleted");
@@ -189,7 +189,7 @@
         function UserList() {
             $.ajax({
                 type: 'GET',
-                url: 'http://localhost:63383/api/item/GetUserItem',
+                url: 'http://localhost:63353/api/item/GetUserItem',
                 dataType: 'json',
             
                 success: function (data) {
